@@ -1,0 +1,54 @@
+.content {
+  display: grid;
+  grid-row-gap: 24px;
+}
+
+@media screen and (min-width: 700px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 16px;
+  }
+
+  header {
+    flex-direction: row;
+    padding-inline: 24px;
+  }
+
+  .nav {
+    position: static;
+    width: 100%;
+    transform: translate(0,0);
+  }
+
+  .nav__list {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav__item {
+    display: inline-block;
+  }
+
+  #hamburger {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .content {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .close-btn {
+    display: none;
+  }
+}

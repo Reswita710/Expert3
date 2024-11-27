@@ -1,0 +1,393 @@
+:root {
+  --primary: 173, 216, 230; 
+  --secondary: 60, 60, 60;  
+}
+
+/* Mobile-First Styling */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: garetBook, "Roboto";
+  font-size: 12px;
+}
+
+/* Skip-Link */
+.skip-link {
+  position: absolute;
+  top: -44px;
+  left: 0;
+  background-color: rgb(var(--secondary));
+  color: rgb(var(--primary));
+  padding: 14px;
+  z-index: 100;
+  height: 44px;
+  border-radius: .375rem;
+}
+ 
+.skip-link:focus {
+  top: 0;
+}
+
+/* Header Section */
+header {
+  display: flex;
+  flex-direction: column;
+  background: rgb(var(--primary));
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__inner img {
+  width: 50%;
+}
+
+.navbar__toggler {
+  color: rgb(var(--secondary));
+  margin-inline: 24px;
+  padding: 12px;
+}
+
+#hamburger:focus {
+  border-radius: .375rem;
+  box-shadow: 0 0 0 .2em rgba(var(--secondary), 0.7);
+}
+
+/* Navigation */
+.nav {
+  width: 250px;
+  border-radius: .375rem;
+  position: absolute;
+  right: 0;
+  transform: translate(250px, 0); 
+  transition: transform 0.3s ease-in-out;
+  margin: 0 auto;
+  background: rgb(var(--primary));
+}
+
+#drawer.open {
+  transform: translate(0,0);
+}
+
+.nav__list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__item {
+  box-sizing: border-box;
+  line-height: 2em;
+  text-transform: uppercase;
+  transition: 0.3s;
+  margin: .3em;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 1.3em;
+  text-decoration: none;
+  color: rgb(var(--secondary));
+}
+
+.nav__item:hover, .nav__item:focus {
+  border-radius: .375rem;
+  box-shadow: 0 0 0 .2em rgba(var(--secondary), 0.7);
+}
+
+/* Jumbotron Section */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 380px;
+  width: 100%;
+  text-align: center;
+  background-image: url("./images/hero.webp");
+  background-position: center;
+  background-color: rgb(var(--primary));
+}
+
+/* Main Title */
+.main__title {
+  color: var(--primary);
+  text-align: center;
+  padding: 16px;
+}
+.main__title::after {
+  content: '';
+  margin-top: 16px;
+  display: block;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* Content Section */
+.content {
+  margin: 16px auto;
+  width: 100%;
+  padding: 32px;
+  display: grid;
+  gap: 1em;
+  text-align: left;
+}
+
+/* Headline & Restaurant Item */
+.headline {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(var(--secondary), 0.4);
+  border-radius: .375rem;
+  color: rgb(var(--primary));
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.headline__figure {
+  width: 100%;
+  display: grid;
+}
+.headline__figure img {
+  grid-area: 1 / 1 / 4 / 2;
+  width: 100%;
+  border-radius: .375rem .375rem 0 0;
+}
+.headline__figure figcaption {
+  grid-area: 1 / 1 / 2 / 2;
+  width: fit-content;
+  padding: 12px 24px;
+  margin: 24px;
+  border-radius: .375rem;
+  font-family: Blanka, "Roboto";
+  color: rgb(var(--secondary));
+  background: rgb(var(--primary));
+}
+
+.headline__content {
+  padding: 24px;
+}
+
+.headline__title a {
+  font-family: garetHeavy, "Roboto";
+  color: rgb(var(--primary));
+  text-decoration: none;
+  padding-block: 8px;
+  font-size: 20px;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.headline__description {
+  text-align: justify;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+}
+
+/* Restaurant Section */
+.restaurant {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 16px;
+}
+ 
+.restaurant .restaurant__poster {
+  width: 100%;
+  border-radius: 0 0 .375rem .375rem;
+}
+
+.restaurant .restaurant__detail {
+  margin: 0 8px;
+}
+ 
+.restaurant .restaurant__info h3,
+.restaurant .restaurant__overview h3,
+.restaurant .restaurant__menus h2 {
+  margin: 8px 0;
+}
+
+.restaurant .restaurant__overview {
+  text-align: justify;
+}
+
+.restaurant .restaurant__menus .items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.restaurant .restaurant__menus .item {
+  padding: 12px;
+  width: fit-content;
+  color: rgba(var(--primary));
+  background: rgba(var(--secondary));
+  border-radius: 0.375rem;
+}
+
+.restaurant .restaurant__review h2 {
+  margin: 8px;
+}
+
+.restaurant .restaurant__review .item {
+  padding: 12px;
+  border-radius: 0.375rem;
+}
+
+.restaurant .restaurant__review .item .name {
+  color: rgba(var(--primary));
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.restaurant .restaurant__review .item .date {
+  font-size: 10px;
+  text-align: end;
+}
+
+.restaurant .restaurant__review .item .review {
+  text-align: justify;
+}
+
+.restaurant .restaurant__review .item::after {
+  content: '';
+  margin-top: 16px;
+  display: block;
+  border-bottom: 5px solid #eeeeee;
+}
+
+.restaurant .restaurant__title::after {
+  content: '';
+  margin-top: 16px;
+  display: block;
+  border-bottom: 5px solid #eeeeee;
+}
+
+.restaurant .restaurant__info::after {
+  content: '';
+  margin: 8px 0 16px;
+  display: block;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* Rating Stars */
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\2606 \2606 \2606 \2606 \2606";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: #f8ce0b;
+}
+
+/* Like Button */
+/* Tombol love sebelum diklik - transparan */
+.like {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* Transparan sebelum diklik */
+  border: #0e0d0d;
+  color: #db0000; /* Warna ikon love merah */
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  border-radius: 50%;
+  border: 2px solid #f00101; /* Border merah untuk ikon */
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Tombol love setelah diklik - background merah */
+.liked {
+  background-color: #db0000; /* Warna merah setelah diklik */
+  color: #ffffff; /* Warna ikon love putih */
+  border: 2px #0e0d0d;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure minimum touch target size for interactive elements */
+button, a, input[type="text"], textarea {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px; /* Additional padding if necessary */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer Section */
+footer {
+  background-color: rgb(var(--primary));
+  color: rgb(var(--secondary));
+  padding: 2em;
+  width: 100%;
+  text-align: center;
+}
+/* Navigation */
+.nav {
+  width: 250px;
+  border-radius: .375rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 20%;
+  transform: translateX(100%); /* Mulai di luar layar */
+  transition: transform 0.3s ease-in-out;
+  background: rgb(var(--primary));
+  z-index: 1000;
+}
+
+.nav.open {
+  transform: translateX(0); /* Geser masuk ke layar */
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: rgb(var(--secondary));
+  cursor: pointer;
+}
+
