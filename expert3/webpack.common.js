@@ -1,11 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const imagemin = require('imagemin');
-const imageminOptipng = require('imagemin-optipng');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;  // Menggunakan ImageminPlugin
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
+  resolve: {
+    fullySpecified: false, // Untuk mengatasi masalah resolusi modul ESM
+  },
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
   },
@@ -26,9 +28,6 @@ module.exports = {
             loader: 'css-loader',
           },
         ],
-      },
-      resolve: {
-        fullySpecified: false, // Untuk mengatasi masalah resolusi modul ESM
       },
     ],
   },
@@ -72,15 +71,16 @@ module.exports = {
         },
       ],
     }),
-    new imagemin({
-      plugins: [
-        imageminOptipng({
-          quality: 50,
-          progressive: true,
-        }),
-      ],
+    new ImageminPlugin({
+      test: /\.(png|jpe?g)$/i,
+      pngquant: {
+        quality: '65-90', // Pengaturan kualitas PNG
+        speed: 4, // Kecepatan kompresi PNG
+      },
+      optipng: {
+        optimizationLevel: 7, // Tingkat optimasi untuk PNG
+      },
     }),
     new BundleAnalyzerPlugin(),
   ],
-
 };
