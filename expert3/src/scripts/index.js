@@ -9,15 +9,6 @@ import App from './views/app';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import Restaurants from './views/pages/detail';
-import('lodash.filter')
-  .then((module) => module.default)
-  .then(filterRestaurant)
-  .catch((error) => alert(error));
-
-  const filterRestaurant = (filter) => {
-    filter(Restaurants, restaurantType.value === 'all' ? {} : { type: restaurantType.value })
-      .forEach(renderRestaurant);
-  };
 
 const START = 10;
 const NUMBER_OF_IMAGES = 100;
