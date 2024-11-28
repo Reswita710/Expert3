@@ -15,9 +15,16 @@ const Restaurants = {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await TheRestaurantDbSource.detailRestaurant(url.id);
     const restaurantContainer = document.querySelector('#restaurant');
+
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
-      restaurant,
+      restaurant: {
+        id: restaurant.id,
+        title: restaurant.title,
+        overview: restaurant.overview,
+        backdrop_path: restaurant.backdrop_path,
+        vote_average: restaurant.vote_average,
+      }
     });
 
     restaurantContainer.innerHTML = template.restaurantDetail(restaurant);
@@ -25,17 +32,6 @@ const Restaurants = {
     this._detailRestaurantMenus(restaurant);
     this._detailRestaurantCustomerReviews(restaurant);
   },
-
-  LikeButtonInitiator.init({
-    likeButtonContainer: document.querySelector('#likeButtonContainer'),
-    restaurant: {
-      id: restaurant.id,
-      title: restaurant.title,
-      overview: restaurant.overview,
-      backdrop_path: restaurant.backdrop_path,
-      vote_average: restaurant.vote_average,
-    }
-  });
 
   _detailRestaurantMenus(restaurant) {
     const foodsContainer = document.querySelector('#foods');

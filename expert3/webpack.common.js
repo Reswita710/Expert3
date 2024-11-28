@@ -22,12 +22,18 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+          {
             loader: 'style-loader',
           },
           {
             loader: 'css-loader',
           },
-        ],
+        ],        
       },
     ],
   },
