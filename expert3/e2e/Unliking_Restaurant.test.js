@@ -6,29 +6,34 @@ Before(({ I }) => {
   I.amOnPage('/');
 });
 
-Scenario(
-  'unliking and verifying a restaurant is removed from favorites',
-  async ({ I }) => {
-    I.amOnPage('/');
-    const firstRestaurant = locate(
-      '.headline__content h1 a.restaurant-name'
-    ).first();
-    const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
+Scenario('unliking and verifying a restaurant is removed from favorites', async ({ I }) => {
+  I.amOnPage('/');
+  
+  // Ambil restoran pertama dari daftar
+  const firstRestaurant = locate('.headline__title a').first(); // Ambil link restoran pertama
+  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
 
-    I.click(firstRestaurant);
-    I.seeElement('#likeButton');
-    I.click('#likeButton');
+  // Klik restoran pertama untuk melihat detailnya
+  I.click(firstRestaurant);
+  I.seeElement('#likeButton');
+  I.click('#likeButton'); // Klik tombol like untuk menyukai restoran
+  
+  // Pindah ke halaman favorit
+  I.amOnPage('/#/like');
+  I.seeElement('.restaurant-list'); // Pastikan daftar restoran favorit terlihat
+  
+  // Verifikasi bahwa restoran yang disukai sudah ada di daftar favorit
+  const likedRestaurantTitle = await I.grabTextFrom('.headline__title a');
+  assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
 
-    I.amOnPage('/#/like');
-    const likedRestaurantTitle = await I.grabTextFrom(
-      '.headline__content h1 a.restaurant-name'
-    );
-    assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
-
-    I.click(locate('.headline__content h1 a.restaurant-name').first());
-    I.click('#likeButton');
-
-    I.amOnPage('/#/like');
-    I.wait(2);
-  }
-);
+  // Klik pada restoran untuk membuka detail dan klik tombol unlike
+  I.click(locate('.headline__title a').first()); 
+  I.seeElement('#likeButton');
+  I.click('#likeButton'); // Klik tombol like untuk menghilangkan restoran dari favorit
+  
+  // Pindah ke halaman favorit
+  I.amOnPage('/#/like');
+  
+  // Verifikasi bahwa restoran sudah tidak ada di daftar favorit
+  I.dontSeeElement('.headline__title a', 'Restaurant should be removed from favorites');
+});

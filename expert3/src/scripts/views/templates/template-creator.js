@@ -3,7 +3,7 @@ import CONFIG from '../../globals/config';
 const restaurantItem = (restaurant) => `
   <article class="headline">
     <figure class="headline__figure">
-      <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="Dicoding Fact Sheet">
+      <img class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="Dicoding Fact Sheet">
       <figcaption>${restaurant.city}</figcaption>
     </figure>
     <div class="headline__content">
