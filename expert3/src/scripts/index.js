@@ -8,10 +8,7 @@ import swRegister from './utils/sw-register';
 import App from './views/app';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import Restaurants from './views/pages/detail';
 
-const START = 10;
-const NUMBER_OF_IMAGES = 100;
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

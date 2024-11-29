@@ -20,16 +20,9 @@
     <a href="#main" class="skip-link">Skip to Content</a>
     <div class="header__inner">
       <picture>
-        <!-- Gambar untuk layar dengan lebar maksimum 600px (biasanya layar seluler) -->
-        <source media="(max-width: 600px)" srcset="images/logo-small.webp">
-        
-        <!-- Gambar untuk layar lebih besar dari 600px (desktop atau tablet) -->
-        <source media="(min-width: 601px)" srcset="images/logo-large.webp">
-        
-        <!-- Gambar fallback untuk browser yang tidak mendukung <picture> -->
-        <img src="images/logo-large.webp" alt="Kitchen Food & Good" loading="lazy">
-      </picture>
-    
+        <source media="(max-width: 600px)" srcset="../src/public/logo-small.webp">
+        <img src="../src/public/logo-large.webp" alt="gambar">
+    </picture>
       <a id="hamburger" class="navbar__toggler" tabindex="0">
         <svg xmlns="http://www.w3.org/2000/svg" width="36" class="bi" fill="currentColor" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
@@ -51,6 +44,7 @@
       </ul>
     </nav>
   </header>
+
 
   <main id="main" tabindex="0"></main>
   <div id="likeButtonContainer"></div>

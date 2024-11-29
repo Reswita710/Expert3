@@ -87,6 +87,8 @@ module.exports = {
         optimizationLevel: 7, // Tingkat optimasi untuk PNG
       },
     }),
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled'
+   }),
   ],
 };
