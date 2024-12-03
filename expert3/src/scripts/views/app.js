@@ -22,6 +22,18 @@ class App {
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
+
+    // Kontrol visibilitas hero section
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      if (url === '/') {
+        heroSection.style.display = 'block'; // Tampilkan hero di Home
+      } else {
+        heroSection.style.display = 'none'; // Sembunyikan di halaman lain
+      }
+    }
+
+
     this._content.innerHTML = await page.render();
     await page.afterRender();
 
@@ -33,5 +45,6 @@ class App {
     });
   }
 }
+
 
 export default App;
