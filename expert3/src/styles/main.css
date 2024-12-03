@@ -116,13 +116,11 @@ header {
   width: 100%;
   max-height: 500px;
   overflow: hidden;
-  
 }
 
 .hero-image {
   height: auto;
   object-fit: cover;
-  width: 100%;
 }
 
 /* Main Title */

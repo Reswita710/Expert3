@@ -5,7 +5,6 @@ import * as template from '../templates/template-creator';
 const Restaurants = {
   async render() {
     return `
-    <section class="hero"></section>
     <h1 class="main__title">Explore Restaurant</h1>
     <section id="restaurants" class="content"></section>
     `;
