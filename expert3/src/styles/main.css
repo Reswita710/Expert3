@@ -112,14 +112,17 @@ header {
 
 /* Jumbotron Section */
 .hero {
-  display: flex;
-  align-items: center;
-  min-height: 380px;
+  position: relative;
   width: 100%;
-  text-align: center;
-  background-image: url("./images/hero.webp");
-  background-position: center;
-  background-color: rgb(var(--primary));
+  max-height: 500px;
+  overflow: hidden;
+  
+}
+
+.hero-image {
+  height: auto;
+  object-fit: cover;
+  width: 100%;
 }
 
 /* Main Title */
