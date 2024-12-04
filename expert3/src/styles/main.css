@@ -71,6 +71,7 @@ header {
 /* Navigation */
 .nav {
   width: 250px;
+  min-height: 30vh;
   border-radius: .375rem;
   position: absolute;
   right: 0;
