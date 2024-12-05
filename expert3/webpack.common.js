@@ -88,7 +88,8 @@ module.exports = {
       },
     }),
     new BundleAnalyzerPlugin({
-      analyzerMode: 'disabled'
+      analyzerMode: 'static',
+      openAnalyzer: false,
    }),
   ],
 };

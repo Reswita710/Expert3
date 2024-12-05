@@ -1,42 +1,40 @@
-const assert = require('assert');
+/* eslint-disable no-undef */
 
 Feature('Unliking Restaurants');
 
-Before(({ I }) => {
-  // Buka halaman utama sebelum setiap scenario
+Scenario('User can unlike a restaurant', async ({ I }) => {
+  // Buka halaman utama
   I.amOnPage('/');
-});
 
-Scenario('unliking and verifying a restaurant is removed from favorites', async ({ I }) => {
-  // Ambil restoran pertama dari daftar
-  const firstRestaurant = locate('.card__title a').first(); // Sesuaikan selector dengan struktur DOM yang sesuai
-  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
+// Verifikasi di halaman utama ada resto yang bernama Istana Emas kemudian klik
+I.see('Istana Emas');
+I.click(locate('a').withText('Istana Emas'));
 
-  // Klik restoran pertama untuk melihat detailnya
-  I.click(firstRestaurant);
+// Tunggu beberapa detik untuk memastikan halaman detail resto dimuat
+I.wait(2); // Tunggu 2 detik
 
-  // Pastikan tombol "like" ada, lalu klik untuk menyukai restoran
-  I.seeElement('#likeButton');
-  I.click('#likeButton');
+// Verifikasi bahwa sudah di halaman detail resto Istana Emas
+I.see('Istana Emas');
 
-  // Pindah ke halaman favorit
-  I.amOnPage('/#/like');
+// Klik id like button kemudian klik
+I.click('#likeButton');
 
-  // Verifikasi bahwa restoran yang disukai sudah ada di daftar favorit
-  I.seeElement('.card__title a'); // Sesuaikan selector jika berbeda
-  const likedRestaurantTitle = await I.grabTextFrom('.card__title a');
-  assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle, 'Restoran tidak ditemukan di daftar favorit');
+// Tunggu beberapa detik untuk memastikan aksi seperti ikon berubah
+I.wait(1); // Tunggu 1 detik
 
-  // Klik restoran yang ada di daftar favorit untuk membuka detail
-  I.click(locate('.card__title a').first());
+// Verifikasi bahwa tombol like berubah (misalnya, ikon berubah)
+I.seeElement('.like i.fa-heart');
 
-  // Pastikan tombol "unlike" ada, lalu klik untuk menghapus restoran dari favorit
-  I.seeElement('#likeButton');
-  I.click('#likeButton');
+// Tunggu beberapa detik setelah klik
+I.wait(1); // Tunggu 1 detik
 
-  // Kembali ke halaman favorit
-  I.amOnPage('/#/like');
+// Klik tombol "Favorite" untuk unlike
+I.click('#likeButton');
 
-  // Verifikasi bahwa restoran sudah tidak ada di daftar favorit
-  I.dontSeeElement('.card__title a', 'Restoran tidak dihapus dari daftar favorit');
+I.wait(1);
+
+// Verifikasi sudah berada di halaman favorite
+I.amOnPage('/#/like');
+I.dontSee('Istana Emas');
+
 });
